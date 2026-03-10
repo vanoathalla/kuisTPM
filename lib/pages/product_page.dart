@@ -26,7 +26,7 @@ class ProductPage extends StatelessWidget {
       body: GridView.builder(
         padding: const EdgeInsets.all(16),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1, // Satu kolom biar lega pak
+          crossAxisCount: 1,
           mainAxisExtent: 320,
           mainAxisSpacing: 16,
         ),

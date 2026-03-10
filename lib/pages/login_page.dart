@@ -11,7 +11,6 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   void _handleLogin() {
-    // Sesuai perintah NIM elu pak
     if (_usernameController.text == '123230150' &&
         _passwordController.text == 'kuis_123230150') {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -51,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset('../gambar/logo.png', height: 120),
+                  Image.asset('logo.png', height: 120),
                   const SizedBox(height: 30),
                   TextField(
                     controller: _usernameController,
