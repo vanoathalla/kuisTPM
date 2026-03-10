@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'product_page.dart'; // Sesuaikan nama filenye
+import 'product_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -7,27 +7,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   void _handleLogin() {
-    // NIM elu nih Mon: 123230150
+    // Sesuai perintah NIM elu pak
     if (_usernameController.text == '123230150' &&
         _passwordController.text == 'kuis_123230150') {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("Login berhasil!"),
           backgroundColor: Colors.green,
         ),
       );
-
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => ProductPage()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login gagal!"), backgroundColor: Colors.red),
+        const SnackBar(
+          content: Text("Login gagal!"),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }
@@ -35,23 +37,58 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("LOGIN PAGE")),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(labelText: "Username (NIM)"),
+      backgroundColor: const Color(0xFFF5F5F5),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
             ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: "Password"),
-              obscureText: true,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset('../gambar/logo.png', height: 120),
+                  const SizedBox(height: 30),
+                  TextField(
+                    controller: _usernameController,
+                    decoration: const InputDecoration(
+                      labelText: "Username",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                      labelText: "Password",
+                      border: OutlineInputBorder(),
+                    ),
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: _handleLogin,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1A4D94),
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: _handleLogin, child: Text("Login")),
-          ],
+          ),
         ),
       ),
     );
